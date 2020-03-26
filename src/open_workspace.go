@@ -28,7 +28,7 @@ func fuzzyFindWorkspaces(args []string) (string, error) {
 	return string(out), nil
 }
 
-func convertAccountsToAutoCompleteItems(items string) string {
+func convertWorkspacesToAutoCompleteItems(items string) string {
 	lines := strings.Split(items, "\n")
 	autoCompleteItems := make([]string, len(lines))
 	for indx, line := range lines {
@@ -60,6 +60,6 @@ func main() {
 	accounts, err := fuzzyFindWorkspaces(os.Args[1:])
 	check(err)
 	
-	items := convertAccountsToAutoCompleteItems(accounts)
+	items := convertWorkspacesToAutoCompleteItems(accounts)
 	fmt.Println(items)
 }
